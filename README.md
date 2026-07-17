@@ -4,8 +4,8 @@
 
 Configured Amazon Route 53 to route:
 
-- www.example.com → Amazon S3 Static Website
-- app.example.com → Amazon EC2 Instance
+- www.sandeepaizone.online → Amazon S3 Static Website
+- app.sandeepaizone.online → Amazon EC2 Instance
 
 ## Services Used
 
@@ -17,7 +17,25 @@ Configured Amazon Route 53 to route:
 
 ## Architecture
 
-(Add architecture image here)
+                                  Internet
+                                      │
+                                      ▼
+                          +------------------------+
+                          |   Amazon Route 53      |
+                          |      Hosted Zone       |
+                          +------------------------+
+                              │              │
+                              │              │
+               www.sandeepaizone.online      app.sandeepaizone.online
+                              │              │
+                              ▼              ▼
+                 +------------------+   +------------------+
+                 |    Amazon S3     |   |    Amazon EC2    |
+                 |  Static Website  |   | Apache / Node.js |
+                 +------------------+   +------------------+
+                              │              │
+                              ▼              ▼
+                     Portfolio Website   Dynamic Web App
 
 ## Workflow
 
@@ -33,7 +51,66 @@ Configured Amazon Route 53 to route:
 
 ## Screenshots
 
-(Add screenshots)
+## Packet Flow
+
+### 🌐 Flow 1: Static Website (Amazon S3)
+
+```text
+User Opens Browser
+        │
+        ▼
+https://www.sandeepaizone.online
+        │
+        ▼
+DNS Request Sent
+        │
+        ▼
+Amazon Route 53
+        │
+        ▼
+Alias Record Lookup
+        │
+        ▼
+Amazon S3 Static Website
+        │
+        ▼
+index.html Returned
+        │
+        ▼
+Website Displayed
+```
+
+---
+
+### 🚀 Flow 2: Dynamic Website (Amazon EC2)
+
+```text
+User Opens Browser
+        │
+        ▼
+https://app.sandeepaizone.online
+        │
+        ▼
+DNS Request Sent
+        │
+        ▼
+Amazon Route 53
+        │
+        ▼
+A Record Lookup
+        │
+        ▼
+Elastic IP Address
+        │
+        ▼
+Amazon EC2 Instance
+        │
+        ▼
+Apache / Node.js Server
+        │
+        ▼
+Web Page Returned
+```
 
 ## Learning Outcomes
 
